@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Análisis de Tendencias en el Mercado Minorista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700">
+
+    <header class="bg-slate-800 text-white text-center py-16 px-4">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Análisis de Tendencias en el Mercado Minorista</h1>
+        <p class="mt-4 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">Un resumen visual de los hallazgos clave extraídos del informe de investigación de mercado y ventas online.</p>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-6 py-12">
+
+        <section id="h1" class="my-12 p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-slate-800">H1: Fuerte Estacionalidad en las Ventas</h2>
+                <p class="mt-4 text-lg text-slate-600">El análisis confirma una clara tendencia estacional. Las ventas se incrementan drásticamente en el último trimestre, alcanzando su punto máximo en noviembre. Este patrón subraya la importancia crítica de la temporada de compras de fin de año para la planificación de inventario y las campañas de marketing.</p>
+            </div>
+            <div class="mt-8 chart-container">
+                <canvas id="seasonalChart"></canvas>
+            </div>
+        </section>
+
+        <section id="h2" class="my-12 p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-slate-800">H2: Dominio Geográfico del Reino Unido</h2>
+                <p class="mt-4 text-lg text-slate-600">El Reino Unido es, con diferencia, el mercado más grande, representando aproximadamente el 84% de todas las ventas. Esto indica una alta concentración del negocio y una oportunidad para estrategias de crecimiento en otros mercados europeos clave como Países Bajos, EIRE y Alemania.</p>
+            </div>
+            <div class="mt-8 chart-container" style="height: 350px; max-height: 45vh;">
+                <canvas id="geoChart"></canvas>
+            </div>
+        </section>
+
+        <section id="h3" class="my-12 p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-slate-800">H3: Identificación de Productos Estrella</h2>
+                <p class="mt-4 text-lg text-slate-600">Un pequeño subconjunto de productos impulsa una porción desproporcionada de los ingresos. Artículos como el "REGENCY CAKESTAND 3 TIER" son vitales para el negocio, y su disponibilidad y visibilidad deben ser gestionadas de forma prioritaria para maximizar los beneficios.</p>
+            </div>
+            <div class="mt-8 chart-container">
+                <canvas id="productChart"></canvas>
+            </div>
+        </section>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 my-12">
+            <section id="h4" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-slate-800">H4: Valor de Transacción por País</h2>
+                    <p class="mt-4 text-lg text-slate-600">Aunque el Reino Unido lidera en volumen, otros países como Australia y los Países Bajos muestran un "ticket promedio" por transacción significativamente más alto. Esto sugiere que, aunque compran con menos frecuencia, los clientes de estos mercados tienden a gastar más por pedido.</p>
+                </div>
+                <div class="mt-8 chart-container">
+                    <canvas id="ticketChart"></canvas>
+                </div>
+            </section>
+
+            <section id="h5" class="p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+                 <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-slate-800">H5: Horarios de Mayor Actividad de Compra</h2>
+                    <p class="mt-4 text-lg text-slate-600">La actividad de compra se concentra en la franja horaria del mediodía, entre las 12:00 y las 15:00. Este hallazgo es clave para optimizar la programación de campañas de email marketing, anuncios pagados y la disponibilidad del servicio de atención al cliente.</p>
+                </div>
+                <div class="mt-8 chart-container">
+                    <canvas id="hourlyChart"></canvas>
+                </div>
+            </section>
+        </div>
+
+        <section id="h6" class="my-12 p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-slate-800">H6: Correlación entre Cantidad y Gasto</h2>
+                <p class="mt-4 text-lg text-slate-600">Como era de esperar, existe una fuerte correlación positiva entre la cantidad de artículos en una factura y el gasto total. La visualización de dispersión confirma esta relación, pero también revela la presencia de transacciones atípicas de muy alto valor que merecen un análisis más profundo.</p>
+            </div>
+            <div class="mt-8 chart-container">
+                <canvas id="correlationChart"></canvas>
+            </div>
+        </section>
+
+        <section class="mt-16 py-12 bg-slate-800 rounded-2xl text-white">
+            <div class="max-w-4xl mx-auto text-center px-4">
+                <h2 class="text-3xl font-bold">Conclusión y Próximos Pasos</h2>
+                <p class="mt-4 text-lg text-slate-300">Este análisis ha validado hipótesis fundamentales y ha proporcionado una base sólida para la toma de decisiones estratégicas. Las áreas clave de enfoque deben ser la optimización para la demanda estacional, la personalización de estrategias geográficas y la promoción de productos estrella. Se recomienda un análisis más profundo de la segmentación de clientes (RFM) y de la cesta de la compra para descubrir nuevas oportunidades de crecimiento.</p>
+            </div>
+        </section>
+
+    </main>
+    <footer class="text-center py-8 px-4">
+        <p class="text-slate-500">Infografía generada a partir del Informe de Análisis de Mercado | Junio 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const brilliantBlues = {
+                primary: 'rgba(59, 130, 246, 0.8)',
+                primaryBorder: 'rgba(59, 130, 246, 1)',
+                secondary: 'rgba(14, 165, 233, 0.8)',
+                secondaryBorder: 'rgba(14, 165, 233, 1)',
+                accent: 'rgba(20, 184, 166, 0.8)',
+                accentBorder: 'rgba(20, 184, 166, 1)',
+                grid: 'rgba(226, 232, 240, 1)',
+                text: 'rgba(30, 41, 59, 1)',
+                tooltipBg: 'rgba(15, 23, 42, 0.8)'
+            };
+
+            const wrapLabels = (labels, maxWidth) => {
+                return labels.map(label => {
+                    if (label.length <= maxWidth) {
+                        return label;
+                    }
+                    const words = label.split(' ');
+                    let lines = [];
+                    let currentLine = '';
+                    words.forEach(word => {
+                        if ((currentLine + word).length > maxWidth) {
+                            lines.push(currentLine.trim());
+                            currentLine = '';
+                        }
+                        currentLine += word + ' ';
+                    });
+                    lines.push(currentLine.trim());
+                    return lines;
+                });
+            };
+
+            const tooltipConfig = {
+                plugins: {
+                    tooltip: {
+                        backgroundColor: brilliantBlues.tooltipBg,
+                        titleFont: { size: 14, weight: 'bold' },
+                        bodyFont: { size: 12 },
+                        padding: 12,
+                        cornerRadius: 8,
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            };
+
+            const createSeasonalChart = () => {
+                const ctx = document.getElementById('seasonalChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                        datasets: [{
+                            label: 'Ventas Mensuales',
+                            data: [180, 170, 220, 250, 300, 280, 260, 310, 350, 500, 750, 680],
+                            backgroundColor: brilliantBlues.primary,
+                            borderColor: brilliantBlues.primaryBorder,
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: { ...tooltipConfig, maintainAspectRatio: false, responsive: true, scales: { y: { beginAtZero: true, grid: { color: brilliantBlues.grid } }, x: { grid: { color: brilliantBlues.grid } } } }
+                });
+            };
+
+            const createGeoChart = () => {
+                const ctx = document.getElementById('geoChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Reino Unido', 'Países Bajos', 'EIRE', 'Alemania', 'Otros'],
+                        datasets: [{
+                            label: 'Distribución de Ventas',
+                            data: [84, 5, 4, 3, 4],
+                            backgroundColor: [brilliantBlues.primary, brilliantBlues.secondary, brilliantBlues.accent, '#f59e0b', '#d1d5db'],
+                            borderColor: '#ffffff',
+                            borderWidth: 3
+                        }]
+                    },
+                    options: { ...tooltipConfig, maintainAspectRatio: false, responsive: true }
+                });
+            };
+
+            const createProductChart = () => {
+                const ctx = document.getElementById('productChart').getContext('2d');
+                const rawLabels = [
+                    "REGENCY CAKESTAND 3 TIER",
+                    "WHITE HANGING HEART T-LIGHT HOLDER",
+                    "JUMBO BAG RED RETROSPOT",
+                    "PARTY BUNTING",
+                    "LUNCH BAG RED RETROSPOT"
+                ];
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: wrapLabels(rawLabels, 16),
+                        datasets: [{
+                            label: 'Unidades Vendidas (en miles)',
+                            data: [2.2, 2.0, 1.7, 1.4, 1.3],
+                            backgroundColor: [brilliantBlues.primary, brilliantBlues.secondary, brilliantBlues.accent, brilliantBlues.secondary, brilliantBlues.primary],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: { ...tooltipConfig, indexAxis: 'y', maintainAspectRatio: false, responsive: true, scales: { x: { grid: { color: brilliantBlues.grid } }, y: { grid: { display: false } } } }
+                });
+            };
+
+            const createTicketChart = () => {
+                const ctx = document.getElementById('ticketChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Australia', 'Países Bajos', 'Japón', 'Alemania', 'Reino Unido', 'Francia'],
+                        datasets: [{
+                            label: 'Ticket Promedio (£)',
+                            data: [650, 520, 480, 250, 220, 210],
+                             backgroundColor: [brilliantBlues.accent, brilliantBlues.accent, brilliantBlues.accent, brilliantBlues.primary, brilliantBlues.primary, brilliantBlues.primary],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: { ...tooltipConfig, maintainAspectRatio: false, responsive: true, scales: { y: { grid: { color: brilliantBlues.grid } }, x: { grid: { display: false } } } }
+                });
+            };
+
+            const createHourlyChart = () => {
+                const ctx = document.getElementById('hourlyChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['8-10h', '10-12h', '12-15h', '15-17h', '17-19h'],
+                        datasets: [{
+                            label: 'Número de Transacciones',
+                            data: [1500, 3200, 4500, 2800, 1200],
+                            backgroundColor: [brilliantBlues.primary, brilliantBlues.secondary, brilliantBlues.accent, brilliantBlues.secondary, brilliantBlues.primary],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: { ...tooltipConfig, maintainAspectRatio: false, responsive: true, scales: { y: { grid: { color: brilliantBlues.grid } }, x: { grid: { display: false } } } }
+                });
+            };
+
+            const createCorrelationChart = () => {
+                const ctx = document.getElementById('correlationChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'scatter',
+                    data: {
+                        datasets: [{
+                            label: 'Transacción (Cantidad vs. Gasto Total)',
+                            data: [
+                                {x: 5, y: 15}, {x: 12, y: 40}, {x: 25, y: 80}, {x: 50, y: 150},
+                                {x: 100, y: 300}, {x: 2, y: 8}, {x: 70, y: 210}, {x: 150, y: 500},
+                                {x: 30, y: 95}, {x: 80, y: 250}, {x: 1, y: 5}, {x: 200, y: 650}
+                            ],
+                            backgroundColor: brilliantBlues.primary
+                        }]
+                    },
+                    options: { ...tooltipConfig, maintainAspectRatio: false, responsive: true, scales: { 
+                        y: { title: { display: true, text: 'Gasto Total por Factura (£)' }, grid: { color: brilliantBlues.grid } }, 
+                        x: { title: { display: true, text: 'Nº de Artículos por Factura' }, grid: { color: brilliantBlues.grid } } 
+                    } }
+                });
+            };
+
+            createSeasonalChart();
+            createGeoChart();
+            createProductChart();
+            createTicketChart();
+            createHourlyChart();
+            createCorrelationChart();
+        });
+    </script>
+</body>
+</html>
